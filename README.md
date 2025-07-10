@@ -1,0 +1,2 @@
+# langchain4j_self_study
+基于langchain4j实现编程小助手
