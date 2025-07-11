@@ -22,7 +22,7 @@ import org.springframework.stereotype.Service;
 public class AiCodeHelperServiceFactory {
 
     @Resource
-    private ChatModel qwenChatModel;
+    private ChatModel myQwenChatModel;
 
     @Resource
     private ContentRetriever contentRetriever;
@@ -41,11 +41,11 @@ public class AiCodeHelperServiceFactory {
         ChatMemory chatMemory = MessageWindowChatMemory.withMaxMessages(10);
         //构造AiService
         AiCodeHelperService aiCodeHelperService = AiServices.builder(AiCodeHelperService.class)
-                .chatModel(qwenChatModel)
+                .chatModel(myQwenChatModel)
                 .chatMemory(chatMemory) //会话记忆
                 .contentRetriever(contentRetriever) //RAG
                 .tools(new InterviewQuestionTool()) //工具
-                .toolProvider(mcpToolProvider)//Mcp工具
+//                .toolProvider(mcpToolProvider)//Mcp工具
                 .build();
 
         return aiCodeHelperService;

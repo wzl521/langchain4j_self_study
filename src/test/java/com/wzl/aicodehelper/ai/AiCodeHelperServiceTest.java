@@ -64,4 +64,10 @@ class AiCodeHelperServiceTest {
         String chat = aiCodeHelperService.chat("china is the best country");
         System.out.println(chat);
     }
+
+    @Test
+    void chatWithListener() {
+        String chat = aiCodeHelperService.chat("你好，我是程序员小武,学习编程两年，请给我一份学习报告");
+        System.out.println(chat);
+    }
 }
