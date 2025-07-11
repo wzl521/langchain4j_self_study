@@ -8,6 +8,7 @@ import dev.langchain4j.memory.ChatMemory;
 import dev.langchain4j.memory.chat.MessageWindowChatMemory;
 import dev.langchain4j.model.chat.ChatModel;
 import dev.langchain4j.model.chat.response.ChatResponse;
+import dev.langchain4j.rag.content.retriever.ContentRetriever;
 import dev.langchain4j.service.AiServices;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +21,9 @@ public class AiCodeHelperServiceFactory {
 
     @Resource
     private ChatModel qwenChatModel;
+
+    @Resource
+    private ContentRetriever contentRetriever;
 
     /**
      * 注册一个Bean，用于创建AiCodeHelperService的实例
@@ -34,6 +38,7 @@ public class AiCodeHelperServiceFactory {
         AiCodeHelperService aiCodeHelperService = AiServices.builder(AiCodeHelperService.class)
                 .chatModel(qwenChatModel)
                 .chatMemory(chatMemory) //会话记忆
+                .contentRetriever(contentRetriever) //RAG
                 .build();
 
         return aiCodeHelperService;
