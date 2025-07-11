@@ -1,6 +1,8 @@
 package com.wzl.aicodehelper.ai;
+import com.wzl.aicodehelper.ai.guardrail.SafeInputGuardrail;
 import dev.langchain4j.service.Result;
 import dev.langchain4j.service.SystemMessage;
+import dev.langchain4j.service.guardrail.InputGuardrails;
 import dev.langchain4j.service.spring.AiService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 //@AiService
+@InputGuardrails(value = {SafeInputGuardrail.class})
 public interface AiCodeHelperService {
 
     @SystemMessage(fromResource = "system-prompt.txt")

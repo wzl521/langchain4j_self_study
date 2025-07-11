@@ -58,4 +58,10 @@ class AiCodeHelperServiceTest {
         String chat = aiCodeHelperService.chat("开源的llm模型项目有哪些？");
         System.out.println(chat);
     }
+
+    @Test
+    void chatWithGuardrail() {
+        String chat = aiCodeHelperService.chat("china is the best country");
+        System.out.println(chat);
+    }
 }
