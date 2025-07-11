@@ -52,4 +52,10 @@ class AiCodeHelperServiceTest {
         String chat = aiCodeHelperService.chatWithRag("有哪些常见的计算机网络面试题？");
         System.out.println(chat);
     }
+
+    @Test
+    void chatWithMcp() {
+        String chat = aiCodeHelperService.chat("开源的llm模型项目有哪些？");
+        System.out.println(chat);
+    }
 }

@@ -5,6 +5,7 @@ import com.wzl.aicodehelper.ai.tools.InterviewQuestionTool;
 import dev.langchain4j.data.message.AiMessage;
 import dev.langchain4j.data.message.SystemMessage;
 import dev.langchain4j.data.message.UserMessage;
+import dev.langchain4j.mcp.McpToolProvider;
 import dev.langchain4j.memory.ChatMemory;
 import dev.langchain4j.memory.chat.MessageWindowChatMemory;
 import dev.langchain4j.model.chat.ChatModel;
@@ -26,6 +27,9 @@ public class AiCodeHelperServiceFactory {
     @Resource
     private ContentRetriever contentRetriever;
 
+    @Resource
+    private McpToolProvider mcpToolProvider;
+
     /**
      * 注册一个Bean，用于创建AiCodeHelperService的实例
      * 反射 + 动态代理
@@ -41,6 +45,7 @@ public class AiCodeHelperServiceFactory {
                 .chatMemory(chatMemory) //会话记忆
                 .contentRetriever(contentRetriever) //RAG
                 .tools(new InterviewQuestionTool()) //工具
+                .toolProvider(mcpToolProvider)//Mcp工具
                 .build();
 
         return aiCodeHelperService;
