@@ -1,11 +1,14 @@
 package com.wzl.aicodehelper.ai;
 import com.wzl.aicodehelper.ai.guardrail.SafeInputGuardrail;
+import dev.langchain4j.service.MemoryId;
 import dev.langchain4j.service.Result;
 import dev.langchain4j.service.SystemMessage;
+import dev.langchain4j.service.UserMessage;
 import dev.langchain4j.service.guardrail.InputGuardrails;
 import dev.langchain4j.service.spring.AiService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 
 import java.util.List;
 
@@ -31,4 +34,7 @@ public interface AiCodeHelperService {
     //返回封装后的结果
     @SystemMessage(fromResource = "system-prompt.txt")
     Result<String> chatWithRagForReport(String userMessage);
+
+    // 流式对话
+    Flux<String> chatStream(@MemoryId int memoryId, @UserMessage String userMessage);
 }
