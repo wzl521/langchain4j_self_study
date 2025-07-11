@@ -1,10 +1,5 @@
 ### custom ###
 application-local.yml
-.gitattributes
-.gitignore
-.mvn
-mvnw
-mvnw.cmd
 
 HELP.md
 target/
