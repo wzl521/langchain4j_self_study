@@ -1,6 +1,7 @@
 package com.wzl.aicodehelper.ai;
 
 
+import com.wzl.aicodehelper.ai.tools.InterviewQuestionTool;
 import dev.langchain4j.data.message.AiMessage;
 import dev.langchain4j.data.message.SystemMessage;
 import dev.langchain4j.data.message.UserMessage;
@@ -39,6 +40,7 @@ public class AiCodeHelperServiceFactory {
                 .chatModel(qwenChatModel)
                 .chatMemory(chatMemory) //会话记忆
                 .contentRetriever(contentRetriever) //RAG
+                .tools(new InterviewQuestionTool()) //工具
                 .build();
 
         return aiCodeHelperService;
